@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{# Pinned rather than derived from `title`, which is a sentence on this page. #}
+{% block title %}Page not found · {{ site.title }}{% endblock %}
+{% block page_class %} page-centred{% endblock %}
+{# Keep. This file is served from the address the visitor mistyped, so without the <base>
+   every relative link below, the stylesheet included, resolves against that address.
+   Nothing in `overprint validate` catches its removal. #}
+{% block head_top %}<base href="{{ base_path }}">{% endblock %}
+{% block content %}
+<header class="error">
+  <p class="error-code">404</p>
+  {# William Turner of Oxford (1789–1862), a college eight rowing at Oxford, 1824.
+     Yale Center for British Art, Paul Mellon Collection, B2001.2.1293. CC0 / public domain. #}
+  <figure class="error-plate">
+    {# gallery picture light: only lit in dark mode #}
+    <div class="plate-lamp" aria-hidden="true"></div>
+    <div class="plate-frame">
+      <img src="assets/img/404-turner.jpg"
+           alt="A watercolour of an eight-oared rowing crew on the river at Oxford, with trees and spires beyond."
+           width="1100" height="573" decoding="async">
+    </div>
+    <figcaption>Watercolour by William Turner of Oxford, 1824</figcaption>
+  </figure>
+  <h1 class="error-title">{{ title }}</h1>
+  <a class="home-link" href="index.html">
+    <svg class="home-arrow" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
+      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+    </svg>
+    <span>Back to blog</span>
+  </a>
+</header>
+{% endblock %}

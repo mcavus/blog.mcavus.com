@@ -1,0 +1,10 @@
+title: Mark Cavusoglu
+author: Mark Cavusoglu
+description: Notes on design and software.
+url: https://blog.mcavus.com
+theme:
+  mode: light
+  accent: '#447F74'
+  font: serif
+  background: '#FDFCF8'
+# No `nav`: the templates in theme/ don't include nav.html, so entries here have no effect.

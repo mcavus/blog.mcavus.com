@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} · {{ site.title }}{% endblock %}
+{% block content %}
+{% include "_backlink.html" %}
+<header class="hero-header">
+  <h1 class="page-title">{{ title }}</h1>
+</header>
+<article class="post">
+  {{ content_html }}
+</article>
+{% endblock %}
