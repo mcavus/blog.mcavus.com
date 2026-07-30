@@ -2,7 +2,7 @@
 
 My blog. Live at **[blog.mcavus.com](https://blog.mcavus.com)**.
 
-Built with **[Overprint](https://mcavus.com/overprint/)**, my static site generator for Markdown
+Built with **[Overprint](https://overprint.mcavus.com/)**, my static site generator for Markdown
 blogs — [source on GitHub](https://github.com/mcavus/overprint). The main site is at
 **[mcavus.com](https://mcavus.com)**.
 
