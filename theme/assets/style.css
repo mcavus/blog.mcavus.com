@@ -231,7 +231,6 @@ body {
 }
 
 .hero-note a {
-  font-family: var(--font-mono);
   color: var(--accent);
   text-decoration: none;
   border-bottom: 1px solid var(--link-line);
@@ -255,6 +254,12 @@ body {
   line-height: 1.25;
   color: var(--text-main);
   margin: 0;
+}
+
+/* Link text that is a literal address — a domain, a path, an email. Sets the face only; the
+   colour and rule come from whichever link rule already applies. */
+.url {
+  font-family: var(--font-mono);
 }
 
 /* ---- post list ----------------------------------------------------------- */
@@ -294,22 +299,22 @@ body {
   margin: 0 0 0.5rem;
 }
 
-/* text-decoration rather than border-bottom: at this size a border sits on the line box and
-   collides with the descenders, while an underline skips them and takes an offset. */
+/* Sage at rest carries the link, so no underline is needed until hover. text-decoration rather
+   than border-bottom: at this size a border sits on the line box and collides with the
+   descenders, while an underline skips them and takes an offset. */
 .post-item-title a {
-  color: var(--text-main);
+  color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: var(--link-line);
+  text-decoration-color: transparent;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
-  transition: color 160ms ease, text-decoration-color 160ms ease;
+  transition: text-decoration-color 160ms ease;
 }
 
 /* .is-clickable is set by post-list.js, so the cursor and the whole-entry hover only appear
    once the entry really does respond to a click anywhere. */
 .post-item-title a:hover,
 .post-item.is-clickable:hover .post-item-title a {
-  color: var(--accent);
   text-decoration-color: var(--accent);
 }
 
@@ -408,10 +413,9 @@ body {
   margin: 1.9rem 0 0.6rem;
 }
 
-/* Courier Prime runs small, so no downsizing */
+/* Links in prose keep the paragraph face; only the colour and the rule mark them. post-links.js
+   adds .url where a link's text is its own address, which restores the mono face. */
 .post a {
-  font-family: var(--font-mono);
-  font-size: 1em;
   color: var(--accent);
   text-decoration: none;
   border-bottom: 1px solid var(--link-line);
