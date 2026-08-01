@@ -32,5 +32,22 @@
     });
   }
 
-  for (var i = 0; i < items.length; i++) wire(items[i]);
+  /* Overprint only appends an ellipsis past its 160-character limit, so shorter excerpts end on a
+     full stop. Trade that stop for an ellipsis; CSS cannot, since it cannot read the text. */
+  function trailOff(item) {
+    var p = item.querySelector(".post-excerpt");
+    if (!p) return;
+    var node = p.firstChild;
+    if (!node || node.nodeType !== 3) return;
+
+    var s = node.nodeValue.replace(/\s+$/, "");
+    if (/(…|\.\.\.)$/.test(s)) return; /* already truncated */
+    if (/[!?]$/.test(s)) return; /* an emphatic ending is deliberate; leave it */
+    node.nodeValue = s.replace(/\.$/, "") + "…";
+  }
+
+  for (var i = 0; i < items.length; i++) {
+    wire(items[i]);
+    trailOff(items[i]);
+  }
 })();

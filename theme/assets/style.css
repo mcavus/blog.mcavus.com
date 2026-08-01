@@ -335,6 +335,28 @@ body {
   margin: 0;
 }
 
+/* The template leaves no whitespace before this span, so there is no break opportunity and the
+   arrow wraps with the last word rather than stranding on a line of its own. */
+.excerpt-cue {
+  display: inline-block;
+  vertical-align: -0.1em;
+  margin-left: 0.4rem;
+  color: var(--accent);
+  opacity: 0.5;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.excerpt-cue svg {
+  display: block;
+  width: 0.82rem;
+  height: 0.82rem;
+}
+
+.post-item.is-clickable:hover .excerpt-cue {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
 .draft-tag {
   font-family: var(--font-ui);
   font-size: 0.62rem;
@@ -903,6 +925,7 @@ body {
   .post-tags a,
   .post a,
   .home-link span,
+  .excerpt-cue,
   .icon-btn,
   .icon-btn::after,
   .built-with,
