@@ -21,11 +21,16 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 
-{# `url` is set on post renders only, so the index, tag pages, and 404 get no canonical. #}
-{% if site.url and url %}<link rel="canonical" href="{{ site.url }}/{{ url }}">{% endif %}
-<meta property="og:type" content="{% if url %}article{% else %}website{% endif %}">
+{# Frontmatter `description:` when a post sets one, otherwise its first paragraph. #}
+{% if description %}<meta name="description" content="{{ description }}">{% endif %}
+{# Nothing should link to a 404, so it gets neither a canonical nor an og:url. The home page is
+   canonically the bare address, which is what the sitemap lists; page_url would say index.html. #}
+{% if page_url and page_kind != "404" %}<link rel="canonical" href="{% if page_kind == "index" %}{{ site.url }}/{% else %}{{ page_url }}{% endif %}">
+<meta property="og:url" content="{% if page_kind == "index" %}{{ site.url }}/{% else %}{{ page_url }}{% endif %}">{% endif %}
+<meta property="og:type" content="{% if page_kind == "post" %}article{% else %}website{% endif %}">
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ site.title }}{% endif %}">
+{% if description %}<meta property="og:description" content="{{ description }}">{% endif %}
 {% if site.url %}<meta property="og:image" content="{{ site.url }}/share.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">{% endif %}
