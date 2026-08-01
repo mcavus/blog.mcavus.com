@@ -466,6 +466,16 @@ body {
   margin: 0 0 0.35rem;
 }
 
+/* The renderer wraps each item's text in a paragraph even in a tight list, and .post p's bottom
+   margin would then space the items like paragraphs. .post li owns the spacing between items. */
+.post li > p {
+  margin: 0;
+}
+
+.post li > p + p {
+  margin-top: 0.6rem;
+}
+
 .post li::marker {
   color: var(--meta);
 }
@@ -523,6 +533,26 @@ body {
   height: auto;
   border-radius: 2px;
   box-shadow: 0 0 0 1px var(--border-soft);
+}
+
+/* Screenshots are PNGs and carry their own rounded corners and drop shadow in the alpha channel.
+   The frame above would trace the transparent margin instead of the window inside it. */
+.post img[src$=".png"] {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* A window capture carries a transparent shadow margin, so the window inside it reads as narrower
+   than the text it sits under. Widen the element by the inverse of that margin — 112px either side
+   of a 2544px canvas leaves the window at 91.20% — so the window lands flush with the measure and
+   only the shadow spills past. margin-left puts the left edge at the column's centre; the transform
+   pulls it back half its own width. Recompute the ratio whenever a screenshot is replaced: the
+   margin is a fixed 112px, so the fraction changes with every capture size. */
+.post img[src$=".png"] {
+  width: calc(100% / 0.9119);
+  max-width: none;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .post table {
