@@ -19,6 +19,9 @@
   --rule-fade: rgba(144, 131, 116, 0.14);
   --link-line: rgba(64, 121, 111, 0.35);
   --surface: #f0ede4;
+  --emboss-lo: rgba(113, 101, 81, 0.62);
+  --emboss-hi: rgba(255, 255, 255, 1);
+  --emboss-face: #f9f8f4;
 
   /* Named apart from Overprint's --display and --serif so the yml's `font:` knob cannot
      reach in and change the body face. */
@@ -40,6 +43,9 @@
     --rule-fade: rgba(144, 131, 116, 0.08);
     --link-line: rgba(127, 187, 176, 0.35);
     --surface: #232322;
+  --emboss-lo: rgba(0, 0, 0, 0.98);
+  --emboss-hi: rgba(255, 255, 255, 0.22);
+  --emboss-face: #181717; /* barely off the page, so the form still catches */
   }
 }
 
@@ -56,6 +62,9 @@
   --rule-fade: rgba(144, 131, 116, 0.08);
   --link-line: rgba(127, 187, 176, 0.35);
   --surface: #232322;
+  --emboss-lo: rgba(0, 0, 0, 0.98);
+  --emboss-hi: rgba(255, 255, 255, 0.22);
+  --emboss-face: #181717; /* barely off the page, so the form still catches */
 }
 
 *,
@@ -831,6 +840,30 @@ body {
   margin-top: 3rem;
   padding-top: 1.75rem;
   border-top: 1px solid var(--rule-fade);
+}
+
+.footer-monogram {
+  font-family: "Cormorant Garamond", serif;
+  /* 2.2rem is the floor for this effect: below it the 1px shadows are too
+     large a fraction of Cormorant's stroke and the relief goes flat */
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-indent: 0.04em;
+  text-align: center;
+  margin: 1.1rem 0 0;
+  color: var(--emboss-face);
+  text-shadow: 0 -1px 1px var(--emboss-lo), 0 1px 1px var(--emboss-hi);
+  user-select: none;
+}
+
+/* the effect is pure shadow, which forced-colours modes strip away */
+@media (forced-colors: active) {
+  .footer-monogram {
+    color: CanvasText;
+    text-shadow: none;
+  }
 }
 
 .footer-row {
