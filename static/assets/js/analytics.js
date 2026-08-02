@@ -2,9 +2,9 @@
    Token comes from dash.cloudflare.com > Analytics & Logs > Web Analytics.
    It is not a secret; it ships in the page either way.
 
-   This is the blog's own token, separate from mcavus.com's, so the two sets of numbers stay
-   apart. The file is otherwise the same on both sites. */
-var CF_BEACON_TOKEN = "85346f73817e449697704a0ed67c8fce";
+   The blog is served under mcavus.com and Cloudflare groups by hostname, so both sites report to
+   one property. Separate the two by path in the dashboard. */
+var CF_BEACON_TOKEN = "071a5d9c8fbc4b468c8a000bc2afe8e0";
 
 (function () {
   /* Skip while developing, so local visits stay out of the numbers. */

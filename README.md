@@ -1,6 +1,6 @@
-# blog.mcavus.com
+# blog
 
-My blog. Live at **[blog.mcavus.com](https://blog.mcavus.com)**.
+My blog. Live at **[mcavus.com/blog](https://mcavus.com/blog)**.
 
 Built with **[Overprint](https://overprint.mcavus.com/)**, my static site generator for Markdown
 blogs — [source on GitHub](https://github.com/mcavus/overprint). The main site is at

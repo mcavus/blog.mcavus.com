@@ -5,8 +5,9 @@
    href, so the comparison happens here — scheme, "www." and a trailing slash are dropped from
    both sides before matching.
 
-   Target: links leaving the site open in a new tab. Same-origin links do not, so a link to
-   another post still reads as moving within the blog. rel follows mcavus.com's convention —
+   Target: links leaving the blog open in a new tab. A link to another post does not, so it still
+   reads as moving within the blog. Same origin is not the test — the blog is served under the main
+   site, so a link there shares the host while still leaving. rel follows mcavus.com's convention —
    noreferrer for third parties, noopener alone for mcavus.com's own hosts, where stripping the
    referrer would only hide the traffic from itself.
 
@@ -31,9 +32,11 @@
 
     if (bare(a.textContent) === bare(href)) a.classList.add("url");
 
-    /* a.host is resolved against the document, so relative hrefs match our own origin */
-    var leavesSite = /^https?:/i.test(href) && a.host !== location.host;
-    if (leavesSite) {
+    /* Every page sits flat in one directory, so that directory is the blog. a.host and a.pathname
+       are resolved against the document, which makes this hold for a relative href too. */
+    var base = location.pathname.replace(/[^/]*$/, "");
+    var leavesBlog = a.host !== location.host || a.pathname.indexOf(base) !== 0;
+    if (leavesBlog) {
       a.target = "_blank";
       a.rel = /(^|\.)mcavus\.com$/i.test(a.host) ? "noopener" : "noopener noreferrer";
     }

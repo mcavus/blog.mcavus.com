@@ -1,7 +1,8 @@
 title: Mark Cavusoglu
 author: Mark Cavusoglu
 description: Notes on design and software.
-url: https://blog.mcavus.com
+# No trailing slash: head.html appends one for the index canonical and the share image.
+url: https://mcavus.com/blog
 theme:
   mode: light
   accent: '#447F74'
