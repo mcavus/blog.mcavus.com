@@ -832,6 +832,25 @@ body {
   height: 0.9375rem;
 }
 
+/* ---- foot-of-post back-link ---------------------------------------------- */
+
+/* Hidden until post-backlink.js finds the page actually scrolls. Gating the parent's display
+   keeps the child .home-link's own `display` out of the fight, so [hidden]-style conflicts can't
+   arise. */
+.post-foot-nav {
+  display: none;
+  margin-top: 2.75rem;
+}
+
+.post-foot-nav.is-visible {
+  display: block;
+}
+
+/* the wrapper owns the gap to the article, as .page-nav does at the top */
+.post-foot-nav .home-link {
+  margin-top: 0;
+}
+
 /* ---- footer -------------------------------------------------------------- */
 
 /* Inside .hero-col, so it shares the column's width and needs no padding of its own;
