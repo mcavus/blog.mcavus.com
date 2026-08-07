@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mark Cavusoglu</title>
+    <link>https://mcavus.com/blog</link>
+    <atom:link href="https://mcavus.com/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Notes on design and software.</description>
+    <item>
+      <title>Introducing Overprint</title>
+      <link>https://mcavus.com/blog/overprint.html</link>
+      <guid isPermaLink="true">https://mcavus.com/blog/overprint.html</guid>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+      <description>I have had multiple versions of my blog and experimented with different providers since I bought this domain in 2015. The one I finally landed on in 2017 was Ca…</description>
+    </item>
+    <item>
+      <title>Website Renovation</title>
+      <link>https://mcavus.com/blog/website-renovation.html</link>
+      <guid isPermaLink="true">https://mcavus.com/blog/website-renovation.html</guid>
+      <pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+      <description>My website (mcavus.com) needed a renovation. Even though it looks simple, it took a while to get the design just right.</description>
+    </item>
+  </channel>
+</rss>
