@@ -1,5 +1,5 @@
 ---
-title: "Overprint"
+title: "Introducing Overprint"
 date: 2026-08-02
 tags: [open-source, website]
 slug: overprint
